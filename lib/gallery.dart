@@ -14,23 +14,11 @@ class GalleryPageState extends State<GalleryPage> {
   List<PhotoInGallery> apiImagesList = [];
   List<PhotoInGallery> imagesList = [
     PhotoInGallery(
-        userName: "Mike Von1",
+        userName: "Mike Von",
         urlSmall:
             "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjMyNDU2fQ",
         urlFull:
-            "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjMyNDU2fQ"),
-    PhotoInGallery(
-        userName: "Mike Von2",
-        urlSmall:
-            "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjMyNDU2fQ",
-        urlFull:
-            "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjMyNDU2fQ"),
-    PhotoInGallery(
-        userName: "Mike Von3",
-        urlSmall:
-            "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjMyNDU2fQ",
-        urlFull:
-            "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjMyNDU2fQ"),
+            "https://images.unsplash.com/photo-1558980664-4d79c6e77b93?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjMyNDU2fQ")
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,9 +29,12 @@ class GalleryPageState extends State<GalleryPage> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text("Gallery"),
-        centerTitle: true,),
-        body: SingleChildScrollView(child:Column(children: _imagesListView(context))),
+        appBar: AppBar(
+          title: Text("Gallery"),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+            child: Column(children: _imagesListView(context))),
       ),
     );
   }
@@ -80,6 +71,7 @@ class GalleryPageState extends State<GalleryPage> {
             ))
         .toList();
   }
+
   _loadImages() async {
     final response = await http.get(
         "https://api.unsplash.com/photos/?client_id=cf49c08b444ff4cb9e4d126b7e9f7513ba1ee58de7906e4360afc1a33d1bf4c0");
@@ -97,13 +89,14 @@ class GalleryPageState extends State<GalleryPage> {
       });
     }
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _loadImages();
   }
-
 }
+
 class PhotoInGallery {
   String userName;
   String urlSmall;
